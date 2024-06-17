@@ -53,11 +53,11 @@ public abstract class Pet {
     @Override
     public String toString() {
         return "Pet{"
+                + ", ownerName = " + ownerName
                 + "type = " + type
                 + ", sex = " + sex
                 + ", age = " + age
                 + ", name ='" + name
-                + ", ownerName = " + ownerName
                 + '}';
     }
 
