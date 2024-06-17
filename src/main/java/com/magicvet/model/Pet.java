@@ -9,6 +9,15 @@ public abstract class Pet {
     private String age;
     private String name;
     private String ownerName;
+    private HealthState healthState;
+
+    public enum HealthState {
+        EXCELLENT,
+        GOOD,
+        FAIR,
+        POOR
+    }
+
 
     public String getType() {
         return type;
@@ -49,6 +58,16 @@ public abstract class Pet {
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
     }
+    public HealthState getHealthState() {
+        return healthState;
+    }
+
+    public void setHealthState(HealthState healthState) {
+        this.healthState = healthState;
+    }
+
+
+
 
     @Override
     public String toString() {
@@ -58,6 +77,7 @@ public abstract class Pet {
                 + ", sex = " + sex
                 + ", age = " + age
                 + ", name ='" + name
+                + ", healthState=" + healthState
                 + '}';
     }
 
@@ -69,11 +89,12 @@ public abstract class Pet {
                 && Objects.equals(sex, pet.sex)
                 && Objects.equals(age, pet.age)
                 && Objects.equals(name, pet.name)
-                && Objects.equals(ownerName, pet.ownerName);
+                && Objects.equals(ownerName, pet.ownerName)
+                && healthState == pet.healthState;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, sex, age, name, ownerName);
+        return Objects.hash(type, sex, age, name, ownerName, healthState);
     }
 }

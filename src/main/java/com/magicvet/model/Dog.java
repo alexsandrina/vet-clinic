@@ -1,38 +1,35 @@
 package main.java.com.magicvet.model;
 import java.util.Objects;
 
-public class Dog extends Pet {
+public class Dog extends Pet{
 
-    public static final String XS = "XS";
-    public static final String S = "S";
-    public static final String M = "M";
-    public static final String L = "L";
-    public static final String XL = "XL";
 
-    private String size;
+    private Size size;
     private String age;
     private String sex;
+    private HealthState healthState;
     public Dog () { }
 
-    public Dog(String size) {
+    public Dog(Size size) {
         this.size = size;
     }
-    public Dog(String size, String age) {
+    public Dog(Size size, String age) {
         this.size = size;
         this.age = age;
     }
-    public Dog(String size, String age, String sex) {
+    public Dog(Size size, String age, String sex, HealthState healthState) {
         this.size = size;
         this.age = age;
         this.sex = sex;
+        this.setHealthState(healthState);
     }
 
 
 
-    public void setSize(String size) {
+    public void setSize(Size size) {
         this.size = size;
     }
-    public String getSize() {
+    public Size getSize() {
         return size;
     }
 
@@ -51,6 +48,36 @@ public class Dog extends Pet {
     public String getSex() {
         return sex;
     }
+    public HealthState getHealthState() {
+        return healthState;
+    }
+
+    public void setHealthState(HealthState healthState) {
+        this.healthState = healthState;
+    }
+
+
+
+    public enum Size {
+        XS(1),
+        S(2),
+        M(3),
+        L(4),
+        XL(5),
+        XXL(6),
+        UNKNOWN(0);
+
+        private final int value;
+
+        Size(int value){
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
+
 
     @Override
     public String toString() {
@@ -61,6 +88,7 @@ public class Dog extends Pet {
                 + ", sex = " + getSex()
                 + ", age = " + getAge()
                 + ", name = " + getName()
+                +", healthState=" + healthState
                 + '}';
     }
 
@@ -68,14 +96,15 @@ public class Dog extends Pet {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Dog dog)) return false;
-         return Objects.equals(size, dog.size) &&
+        return Objects.equals(size, dog.size) &&
                 Objects.equals(age, dog.age) &&
-                Objects.equals(sex, dog.sex);
+                Objects.equals(sex, dog.sex) &&
+                getHealthState() == dog.getHealthState();
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(size);
+        return Objects.hash(size, getAge(), getSex(), getHealthState());
     }
 }
