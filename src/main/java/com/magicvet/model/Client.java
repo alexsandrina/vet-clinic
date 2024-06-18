@@ -1,21 +1,29 @@
 package main.java.com.magicvet.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Client {
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
+
     private String firstName;
     private String lastName;
     private String email;
     private Pet pet;
+    private final LocalDateTime registrationDate = LocalDateTime.now();
 
-    @Override
+     @Override
     public String toString() {
-        return "Client {"
-                + "\n\tfirstName = " + firstName
-                + ", lastName = " + lastName
-                + ", email = " + email
-                + ",\n\tpets = " + pet
-                + "\n}";
+        return "Client {" +
+                "\n\tfirstName = " + firstName +
+                ", lastName = " + lastName +
+                ", email = " + email +
+                ",\n\tpets = " + pet +
+                ", registrationDate = " + registrationDate.format(FORMATTER) +
+                "\n}";
+
+
     }
 
     @Override
@@ -25,12 +33,14 @@ public class Client {
         return Objects.equals(firstName, client.firstName)
                 && Objects.equals(lastName, client.lastName)
                 && Objects.equals(email, client.email)
-                && Objects.equals(pet, client.pet);
+                && Objects.equals(pet, client.pet)
+                && Objects.equals(registrationDate, client.registrationDate);
     }
+
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, email, pet);
+        return Objects.hash(firstName, lastName, email, pet, registrationDate);
     }
 
     public void setFirstName(String firstName) {

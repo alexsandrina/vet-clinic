@@ -7,6 +7,7 @@ public class Cat extends Pet {
     public Cat() {}
 
     public Cat(String age, String sex, HealthState healthState) {
+        setType("cat");
         this.setAge(age);
         this.setSex(sex);
         this.setHealthState(healthState);
@@ -15,11 +16,11 @@ public class Cat extends Pet {
     @Override
     public String toString() {
         return "Cat{"
-                + ", ownerName = " + getOwnerName()
-                + ", type = " + getType()
+                + "type = " + getType()
                 + ", sex = " + getSex()
                 + ", age = " + getAge()
                 + ", name = " + getName()
+                + ", ownerName = " + getOwnerName()
                 + ", healthState = " + getHealthState()
                 + '}';
     }

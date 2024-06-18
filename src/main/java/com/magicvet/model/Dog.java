@@ -1,4 +1,5 @@
 package main.java.com.magicvet.model;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Dog extends Pet{
@@ -18,10 +19,12 @@ public class Dog extends Pet{
         this.age = age;
     }
     public Dog(Size size, String age, String sex, HealthState healthState) {
+        setType("dog");
         this.size = size;
         this.age = age;
         this.sex = sex;
         this.setHealthState(healthState);
+
     }
 
 
@@ -77,20 +80,23 @@ public class Dog extends Pet{
             return value;
         }
     }
-
-
     @Override
     public String toString() {
-        return "Dog{"
-                + ", ownerName = " + getOwnerName()
-                + "size = " + size
-                + ", type = " + getType()
-                + ", sex = " + getSex()
-                + ", age = " + getAge()
-                + ", name = " + getName()
-                +", healthState=" + healthState
-                + '}';
+        return "Pet {" +
+                "type = " + getType() +
+                ", name = " + getName() +
+                ", sex = " + getSex() +
+                ", age = " + getAge() +
+                ", size = " + getSize() +
+                ", health = " + getHealthState() +
+                ", ownerName = " + getOwnerName() +
+                //", registrationDate = " + getRegistrationDate() +
+                "}";
     }
+
+    /*private String getRegistrationDate() {
+        return getRegistrationDate();
+    }*/
 
     @Override
     public boolean equals(Object o) {

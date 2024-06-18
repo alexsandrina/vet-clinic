@@ -1,8 +1,12 @@
 package main.java.com.magicvet.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public abstract class Pet {
+
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
 
     private String type;
     private String sex;
@@ -10,6 +14,8 @@ public abstract class Pet {
     private String name;
     private String ownerName;
     private HealthState healthState;
+
+    private final LocalDateTime registrationDate = LocalDateTime.now();
 
     public enum HealthState {
         EXCELLENT,
@@ -72,12 +78,13 @@ public abstract class Pet {
     @Override
     public String toString() {
         return "Pet{"
-                + ", ownerName = " + ownerName
                 + "type = " + type
                 + ", sex = " + sex
                 + ", age = " + age
-                + ", name ='" + name
-                + ", healthState=" + healthState
+                + ", name = " + name
+                + ", healthState = " + healthState
+                + ", ownerName = " + ownerName
+                + ", registrationDate = " + registrationDate.format(FORMATTER)
                 + '}';
     }
 
@@ -90,7 +97,8 @@ public abstract class Pet {
                 && Objects.equals(age, pet.age)
                 && Objects.equals(name, pet.name)
                 && Objects.equals(ownerName, pet.ownerName)
-                && healthState == pet.healthState;
+                && healthState == pet.healthState
+                && registrationDate == registrationDate;
     }
 
     @Override
