@@ -71,6 +71,9 @@ public abstract class Pet {
     public void setHealthState(HealthState healthState) {
         this.healthState = healthState;
     }
+    public String getFormattedRegistrationDate() {
+        return registrationDate.format(FORMATTER);
+    }
 
 
 
@@ -84,7 +87,7 @@ public abstract class Pet {
                 + ", name = " + name
                 + ", healthState = " + healthState
                 + ", ownerName = " + ownerName
-                + ", registrationDate = " + registrationDate.format(FORMATTER)
+                + ", registrationDate = " + getFormattedRegistrationDate() //registrationDate.format(FORMATTER)
                 + '}';
     }
 
@@ -98,11 +101,11 @@ public abstract class Pet {
                 && Objects.equals(name, pet.name)
                 && Objects.equals(ownerName, pet.ownerName)
                 && healthState == pet.healthState
-                && registrationDate == registrationDate;
+                && registrationDate.equals(pet.registrationDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, sex, age, name, ownerName, healthState);
+        return Objects.hash(type, sex, age, name, ownerName, healthState, registrationDate);
     }
 }

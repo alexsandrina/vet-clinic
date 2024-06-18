@@ -1,5 +1,5 @@
 package main.java.com.magicvet.model;
-import java.time.format.DateTimeFormatter;
+
 import java.util.Objects;
 
 public class Dog extends Pet{
@@ -90,13 +90,11 @@ public class Dog extends Pet{
                 ", size = " + getSize() +
                 ", health = " + getHealthState() +
                 ", ownerName = " + getOwnerName() +
-                //", registrationDate = " + getRegistrationDate() +
+                ", registrationDate = " + getFormattedRegistrationDate() +
                 "}";
     }
 
-    /*private String getRegistrationDate() {
-        return getRegistrationDate();
-    }*/
+
 
     @Override
     public boolean equals(Object o) {

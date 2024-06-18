@@ -15,13 +15,14 @@ public class Cat extends Pet {
 
     @Override
     public String toString() {
-        return "Cat{"
+        return "Pet{"
                 + "type = " + getType()
                 + ", sex = " + getSex()
                 + ", age = " + getAge()
                 + ", name = " + getName()
                 + ", ownerName = " + getOwnerName()
                 + ", healthState = " + getHealthState()
+                + ", registrationDate = " + getFormattedRegistrationDate()
                 + '}';
     }
 
