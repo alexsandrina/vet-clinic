@@ -11,12 +11,8 @@ public class ClientService {
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
     private static  String NAME_PATTERN = "^[a-zA-Z-]{2,}$";
 
-
-
     public Optional<Client> registerNewClient() {
         Client client = null;
-
-
         System.out.println("Please provide client details.");
         System.out.print("Email: ");
         String email = Main.SCANNER.nextLine();
@@ -27,9 +23,7 @@ public class ClientService {
                     + client.getLastName() + " (" + client.getEmail() + ")");
         } else {
             System.out.println("Provided email is invalid.");
-
         }
-
         return Optional.ofNullable(client);
     }
     private static Client buildClient(String email) {
@@ -67,12 +61,10 @@ public class ClientService {
             location = Client.Location.UKNOWN;
             System.out.println("Unable to parse value '" + locationInput
                     + "'. Using default value: " + Client.Location.UKNOWN);
-
         }
         client.setLocation(location);
         return client;
     }
-
     private static void validateName(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
@@ -83,7 +75,6 @@ public class ClientService {
             throw new IllegalArgumentException("Invalid name pattern. Name must contain at least 2 characters and only letters and hyphens.");
         }
     }
-
     private static boolean isEmailValid(String email) {
         if (email == null || email.isEmpty()) {
             return false;

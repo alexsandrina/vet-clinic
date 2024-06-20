@@ -1,18 +1,13 @@
 package main.java.com.magicvet.model;
-
 import java.util.Objects;
-
 public class Cat extends Pet {
-
     public Cat() {}
-
     public Cat(String age, String sex, HealthState healthState) {
         setType("cat");
         this.setAge(age);
         this.setSex(sex);
         this.setHealthState(healthState);
     }
-
     @Override
     public String toString() {
         return "Pet{"
@@ -25,7 +20,6 @@ public class Cat extends Pet {
                 + ", registrationDate = " + getFormattedRegistrationDate()
                 + '}';
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -34,7 +28,6 @@ public class Cat extends Pet {
                 && Objects.equals(getSex(), cat.getSex())
                 && getHealthState() == cat.getHealthState();
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(getAge(), getSex(), getHealthState());
